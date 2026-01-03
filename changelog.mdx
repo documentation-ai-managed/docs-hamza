@@ -1,0 +1,128 @@
+---
+title: Changelog
+description: Track the latest updates and improvements to Hamza.
+---
+
+## Recent Changes
+
+Stay informed about Hamza's evolution. You receive new features, performance improvements, and bug fixes with each release. Check your current version using the dashboard or CLI.
+
+<Callout kind="tip">
+  Enable automatic updates in your project settings to always run the latest version.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Added real-time collaboration for shared documentation spaces
+- Introduced version history with diff viewer for page changes
+- Integrated search indexing for faster content discovery across projects
+
+## Improvements
+
+- Enhanced export options including PDF and Markdown bundles
+- Optimized rendering performance for large documentation trees
+
+## Bug Fixes
+
+- Fixed sync issues when editing docs across multiple devices
+- Resolved authentication token refresh failures during long sessions
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Custom themes and branding support with CSS variables
+- Embed external content like videos and iframes directly in pages
+- API endpoints for programmatic doc management
+
+## Improvements
+
+- Better mobile responsiveness for documentation previews
+- Streamlined onboarding with interactive tutorials
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## Initial Release
+
+- Core documentation organization and management system
+- WYSIWYG editor with Markdown support
+- Project-based spaces for team collaboration
+- Basic integrations with GitHub and GitLab
+
+## Breaking Changes
+
+- Updated configuration format to YAML (previously JSON)
+
+</Update>
+
+## Upcoming Roadmap
+
+Discover what's next for Hamza. These milestones guide our development priorities.
+
+<Columns cols={3}>
+  <Card title="v1.3.0: AI Assistance" icon="zap" href="#">
+    AI-powered content suggestions and auto-summaries for your docs.
+  </Card>
+  <Card title="v1.4.0: Advanced Analytics" icon="bar-chart-3" href="#">
+    Usage insights, popular pages, and reader engagement metrics.
+  </Card>
+  <Card title="v2.0.0: Enterprise Features" icon="shield" href="#">
+    SSO, audit logs, and unlimited storage for teams.
+  </Card>
+</Columns>
+
+## Stay Updated
+
+Follow these steps to monitor changes and upgrade smoothly.
+
+<Steps>
+  <Step title="Check Your Version" icon="package">
+    Use the CLI to verify your installed version:
+    
+````bash
+hamza version
+````
+    
+    Expected output: `v1.2.0`.
+  </Step>
+  <Step title="Upgrade" icon="upload">
+    <Tabs>
+      <Tab title="npm" icon="package">
+````bash
+npm update hamza
+````
+      </Tab>
+      <Tab title="Docker" icon="docker">
+````bash
+docker pull hamza/docs:latest
+docker run -p 3000:3000 hamza/docs:latest
+````
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Review Changes" icon="book-open">
+    Visit the [dashboard](https://dashboard.example.com) for release notes and migration guides.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="JavaScript,Python">
+```javascript
+// Check version programmatically
+import { getHamzaVersion } from '@hamza/docs';
+
+console.log(getHamzaVersion()); // Outputs: "v1.2.0"
+```
+
+```python
+# Python SDK version check
+from hamza import __version__
+
+print(__version__)  # Outputs: "v1.2.0"
+```
+</CodeGroup>

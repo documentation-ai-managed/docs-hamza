@@ -1,0 +1,134 @@
+---
+title: Getting Started with Hamza
+description: Set up your Hamza account and create your first documentation project in minutes.
+---
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+<Callout kind="info">
+- A modern web browser like Chrome, Firefox, or Safari
+- An email address for account verification
+- Optional: Node.js `{>=18}` for CLI tools
+</Callout>
+
+## Create Your Hamza Account
+
+Sign up and log in to access your documentation workspace.
+
+<Steps>
+  <Step title="Visit Hamza" icon="globe">
+    Navigate to [https://app.hamza.com](https://app.hamza.com) and click **Sign Up**.
+  </Step>
+  <Step title="Register" icon="user-plus">
+    Enter your email, create a password, and complete the verification.
+  </Step>
+  <Step title="Verify Email" icon="mail">
+    Check your inbox and click the verification link.
+  </Step>
+  <Step title="Log In" icon="log-in">
+    Return to the site and sign in with your credentials.
+  </Step>
+</Steps>
+
+## Create a New Documentation Space
+
+Organize your project docs in a dedicated space.
+
+<Steps>
+  <Step title="Dashboard" icon="layout-dashboard">
+    After login, you land on the dashboard. Click **New Space**.
+  </Step>
+  <Step title="Name Your Space" icon="edit-3">
+    Enter a name like `My Project Docs` and select **Documentation** template.
+  </Step>
+  <Step title="Customize Settings" icon="settings">
+    Add a description and set visibility to **Private** or **Public**.
+  </Step>
+  <Step title="Create Space" icon="plus">
+    Click **Create** to generate your space.
+  </Step>
+</Steps>
+
+## Upload Your Initial Project Files
+
+Add your Markdown files, images, and configs to the space.
+
+<Tabs>
+  <Tab title="Web UI" icon="upload">
+    Drag and drop files into the **Files** panel or click **Upload**.
+
+    ```
+    Supported formats:
+    - `.mdx`, `.md` for docs
+    - `.png`, `.jpg` for images
+    - `.json`, `.yaml` for configs
+    ```
+
+    Organize into folders like `guides/`, `api/`.
+  </Tab>
+  <Tab title="CLI" icon="terminal">
+    Install the Hamza CLI for bulk uploads.
+
+    <CodeGroup tabs="npm,yarn">
+    ````bash
+    npm install -g @hamza/cli
+    ````
+    ````bash
+    yarn global add @hamza/cli
+    ````
+    </CodeGroup>
+
+    Authenticate and upload:
+
+    ````bash
+    hamza login
+    # Enter your API token from https://app.hamza.com/settings/tokens
+
+    hamza space upload my-project-docs ./src/docs
+    ````
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  Start with a `README.mdx` file to set up your homepage automatically.
+</Callout>
+
+## Basic Interface Tour
+
+Explore the main sections of your Hamza workspace.
+
+<Columns cols={3}>
+  <Card title="Editor" icon="edit-3" href="#editor">
+    Real-time MDX editor with live preview and AI suggestions.
+  </Card>
+  <Card title="Files" icon="file-text" href="#files">
+    File manager for organizing docs, assets, and configs.
+  </Card>
+  <Card title="Preview" icon="eye" href="#preview">
+    Publish and share live previews instantly.
+  </Card>
+  <Card title="Settings" icon="settings" href="#settings">
+    Manage spaces, users, and custom domains.
+  </Card>
+</Columns>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Write Your First Doc" icon="book-open" href="/introduction">
+    Learn MDX authoring and components.
+  </Card>
+  <Card title="Customize Themes" icon="palette" href="/configuration">
+    Brand your docs with custom styles.
+  </Card>
+  <Card title="Collaborate" icon="users" href="/authentication">
+    Invite team members and set permissions.
+  </Card>
+  <Card title="Publish" icon="globe" href="/changelog">
+    Deploy to custom domains.
+  </Card>
+</Columns>
+
+Congratulations! You've set up Hamza and created your first space. Build more pages and explore advanced features.

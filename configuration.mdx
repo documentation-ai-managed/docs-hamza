@@ -1,0 +1,198 @@
+---
+title: Configuring Your Hamza Space
+description: Customize your documentation environment to fit your project's needs and workflows.
+---
+
+## Overview
+
+Hamza lets you tailor your documentation space to match your team's workflows. Configure permissions to control access, set themes with your brand colors like `#3B82F6`, integrate custom templates for consistent pages, and set up notifications plus backups for reliability.
+
+<Columns cols={3}>
+  <Card title="Permissions" icon="shield" href="#permissions">
+    Manage who can edit and view your docs.
+  </Card>
+  <Card title="Themes" icon="palette" href="#themes">
+    Apply custom colors and styles.
+  </Card>
+  <Card title="Templates" icon="file-text" href="#templates">
+    Use reusable page layouts.
+  </Card>
+</Columns>
+
+<Callout kind="info">
+  Start with the Hamza dashboard at `https://dashboard.example.com` to access all configuration options.
+</Callout>
+
+## Setting Up Permissions and Access
+
+Control access to your Hamza space with role-based permissions.
+
+### Key Permission Options
+
+<ParamField path="role" param-type="string" required="true">
+  User role: `admin`, `editor`, or `viewer`.
+</ParamField>
+
+<ParamField path="teamId" param-type="string" required="false">
+  Restrict to specific team identifier.
+</ParamField>
+
+<ParamField header="X-API-Key" param-type="string" required="true">
+  Your API key from `https://dashboard.example.com/api-keys`.
+</ParamField>
+
+Use the API to update permissions:
+
+<CodeGroup tabs="JavaScript,cURL">
+  ```javascript
+  const response = await fetch('https://api.example.com/v1/spaces/{spaceId}/permissions', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${YOUR_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      role: 'editor',
+      users: ['user@example.com']
+    })
+  });
+  ```
+  ```bash
+  curl -X POST https://api.example.com/v1/spaces/{spaceId}/permissions \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "role": "editor",
+      "users": ["user@example.com"]
+    }'
+  ```
+</CodeGroup>
+
+## Managing Themes and Brand Colors
+
+Customize your space's appearance. Set your primary brand color to `#3B82F6` for a blue accent.
+
+<Steps>
+  <Step title="Access Theme Settings" icon="settings">
+    Navigate to `https://dashboard.example.com/settings/themes`.
+  </Step>
+  <Step title="Update Colors">
+    
+    Edit the theme JSON:
+    
+    ````json
+    {
+      "primaryColor": "#3B82F6",
+      "secondaryColor": "#1E40AF"
+    }
+    ````
+    
+  </Step>
+  <Step title="Preview and Save" icon="eye">
+    Preview changes and save.
+  </Step>
+</Steps>
+
+## Integrating Custom Templates
+
+Create reusable templates for pages like guides or APIs.
+
+<Tabs>
+  <Tab title="JSON Template" icon="code">
+    
+    Save as `template.json`:
+    
+    ````json
+    {
+      "title": "{pageTitle}",
+      "frontmatter": {
+        "description": "{pageDescription}"
+      },
+      "sections": [
+        {
+          "type": "markdown",
+          "content": "# {sectionTitle}\n\n{body}"
+        }
+      ]
+    }
+    ````
+    
+  </Tab>
+  <Tab title="YAML Template" icon="file">
+    
+    Alternative YAML format:
+    
+    ````yaml
+    title: '{pageTitle}'
+    sections:
+      - type: markdown
+        content: |
+          # {sectionTitle}
+          
+          {body}
+    ````
+    
+  </Tab>
+</Tabs>
+
+Upload via dashboard or API:
+
+<Response show-lines="false">
+  ```json
+  {
+    "id": "tmpl_abc123",
+    "name": "Guide Template",
+    "content": "{templateContent}"
+  }
+  ```
+</Response>
+
+## Notifications and Backups
+
+Set up email notifications and automatic backups.
+
+### Notification Config
+
+<ParamField body="events" param-type="array" required="true">
+  Events like `page_updated`, `user_invited`.
+</ParamField>
+
+<ParamField query="webhookUrl" param-type="string" required="false">
+  Send to `https://your-webhook-url.com/hamza`.
+</ParamField>
+
+### Advanced Options
+
+<Expandable title="Backup Schedules" default-open="false">
+
+Configure cron-based backups:
+
+````javascript
+const cron = require('node-cron');
+
+// Daily backup at 2 AM
+cron.schedule('0 2 * * *', async () => {
+  await fetch('https://api.example.com/v1/backups', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${YOUR_API_KEY}` },
+    body: JSON.stringify({ spaceId: 'space_123' })
+  });
+});
+````
+
+</Expandable>
+
+<Callout kind="tip">
+  Test notifications in the dashboard before enabling production webhooks.
+</Callout>
+
+## Troubleshooting Common Issues
+
+| Issue | Solution |
+|-------|----------|
+| Permission denied | Verify `X-API-Key` header and role. |
+| Theme not applying | Clear browser cache after saving. |
+| Template upload fails | Check file size `<10MB` and format. |
+| Backups missing | Confirm cron job or schedule in dashboard. |
+
+For more, see [Quickstart](/quickstart).

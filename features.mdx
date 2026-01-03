@@ -1,0 +1,133 @@
+---
+title: Core Features of Hamza
+description: Explore the main capabilities of Hamza for efficient project documentation organization.
+---
+
+## Overview
+
+Hamza provides powerful tools to streamline your documentation workflow. You can build structured pages, collaborate seamlessly, search content effortlessly, and share your work across platforms.
+
+<Columns cols={2}>
+  <Card title="Structured Pages" icon="book-open" href="#structured-pages">
+    Organize content with MDX components and hierarchies.
+  </Card>
+  <Card title="Collaboration Tools" icon="users" href="#collaboration">
+    Work with teams using version control integration.
+  </Card>
+  <Card title="Search & Tagging" icon="search" href="#search-tagging">
+    Find information quickly with advanced search.
+  </Card>
+  <Card title="Export Options" icon="share-2" href="#exporting">
+    Publish and distribute docs in multiple formats.
+  </Card>
+</Columns>
+
+## Building and Structuring Documentation Pages
+
+Create hierarchical documentation sites with Hamza's MDX support. You define pages using YAML frontmatter and structured headings. Start every page with frontmatter for metadata, then use H2 headings for sections.
+
+<Steps>
+  <Step title="Create Frontmatter" icon="file-text">
+    Add YAML at the top of your `.mdx` file.
+
+````mdx
+---
+title: My Page
+description: Page summary.
+---
+````
+  </Step>
+  <Step title="Add Headings" icon="heading">
+    Use ## for main sections, ### for subsections. Maintain hierarchy to ensure navigation works.
+  </Step>
+  <Step title="Insert Components" icon="components">
+    Embed `<Callout>`, `<Tabs>`, and others for rich content.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Always escape special characters like `{variable}` or `<100ms` with backticks in prose to prevent parsing errors.
+</Callout>
+
+## Collaboration and Version Control Tools
+
+Hamza integrates with Git for version control. You commit changes, create branches for features, and merge via pull requests. Real-time collaboration happens through shared previews.
+
+<Tabs>
+  <Tab title="GitHub" icon="github">
+    Connect your repo to Hamza for automatic builds.
+
+````bash
+git add docs/features.mdx
+git commit -m "Add features overview"
+git push origin main
+````
+  </Tab>
+  <Tab title="GitLab" icon="git-branch">
+    Use merge requests for team reviews.
+
+````bash
+git push origin feature/collaboration
+# Create MR in GitLab UI
+````
+  </Tab>
+</Tabs>
+
+Teams assign reviewers and resolve comments directly in the preview interface.
+
+## Search and Tagging Functionalities
+
+Tag pages and search across your docs. Assign tags like `["feature", "guide"]` in frontmatter for categorization. Hamza's full-text search indexes content, headings, and code blocks.
+
+<CodeGroup tabs="Frontmatter,API">
+```yaml
+---
+title: Features
+tags: ["guide", "core"]
+---
+```
+
+```javascript
+// Search API example
+const results = await fetch('https://api.example.com/search?q=features', {
+  headers: { Authorization: `Bearer ${YOUR_API_KEY}` }
+});
+```
+</CodeGroup>
+
+| Feature       | Description                          | Example Usage                  |
+|---------------|--------------------------------------|--------------------------------|
+| Tags          | Categorize pages                     | `tags={["api", "sdk"]}`        |
+| Full-Text     | Search body, code, headings          | Query: `hamza mdx components` |
+| Filters       | Narrow by tags or date               | `?tags=guide`                  |
+
+## Exporting and Sharing Options
+
+Export your docs to static sites, PDFs, or APIs. Share via public links or embeds.
+
+<ExpandableGroup>
+  <Expandable title="Static Export" default-open="true">
+    Generate a deployable site.
+
+````bash
+hamza export --format=static --output=dist/
+# Deploy to Vercel or Netlify
+````
+  </Expandable>
+  <Expandable title="PDF Generation">
+    Convert pages to PDF for offline use.
+
+````bash
+hamza export --format=pdf --pages=features.mdx
+````
+  </Expandable>
+  <Expandable title="API Sharing">
+    Expose docs via REST API.
+
+    Use `https://api.example.com/docs/features` for JSON output.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="success">
+  Start with structured pages to unlock all Hamza features. Check [Quickstart](/quickstart) for setup.
+</Callout>

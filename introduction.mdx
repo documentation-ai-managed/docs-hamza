@@ -1,0 +1,119 @@
+---
+title: Introduction to Hamza
+description: Discover Hamza, your default documentation space for organizing and managing all project documentation with ease.
+---
+
+## Overview
+
+Hamza provides a centralized space to organize, edit, and publish your project documentation. You create structured pages using MDX, collaborate with teams, and maintain version history effortlessly. Benefit from intuitive navigation, search, and customizable themes to streamline your workflow.
+
+## Key Features
+
+Hamza offers powerful tools for documentation management.
+
+<Columns cols={3}>
+  <Card title="MDX-Powered Pages" icon="book-open" href="/docs/mdx-guide">
+    Build rich pages with components like `<Callout>` and `<Steps>`. Embed code, diagrams, and interactive elements seamlessly.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="/docs/versioning">
+    Track changes, revert edits, and collaborate without conflicts using built-in Git integration.
+  </Card>
+  <Card title="Global Search" icon="search" href="/docs/search">
+    Find content instantly across all pages with full-text search and filters.
+  </Card>
+</Columns>
+
+## Quick Start
+
+Get started with Hamza in minutes.
+
+<Steps>
+  <Step title="Create Your Space" icon="plus">
+    Sign up at `https://hamza.example.com` and create a new documentation space for your project.
+  </Step>
+  <Step title="Add Your First Page" icon="file-plus">
+    Click **New Page**, choose `introduction.mdx`, and start editing with the visual editor.
+  </Step>
+  <Step title="Publish Changes" icon="upload">
+    Preview your page, then hit **Publish** to make it live for your team.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Customize your space theme using the brand color `#3B82F6` in settings for a consistent look.
+</Callout>
+
+## Quick Navigation
+
+Access essential sections quickly.
+
+<Columns cols={2}>
+  <Card title="Quickstart Guide" icon="zap" href="/quickstart">
+    Set up your first project in under 5 minutes.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your docs with API keys and OAuth.
+  </Card>
+  <Card title="Changelog" icon="git-commit" href="/changelog">
+    Stay updated with the latest releases.
+  </Card>
+  <Card title="FAQ" icon="help-circle" href="/faq">
+    Common questions and troubleshooting.
+  </Card>
+</Columns>
+
+## Brand Guidelines
+
+Follow these guidelines to maintain consistency.
+
+<Tabs>
+  <Tab title="Primary Color" icon="palette">
+    Use `#3B82F6` as your primary brand color.
+
+    ```css
+    :root {
+      --brand-primary: #3B82F6;
+    }
+
+    .button {
+      background-color: var(--brand-primary);
+      color: white;
+    }
+    ```
+  </Tab>
+  <Tab title="Typography" icon="type">
+    Pair with sans-serif fonts for readability.
+
+    <CodeGroup tabs="CSS,MDX">
+    ````css
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    ````
+    ````mdx
+    ## Heading (H2)
+
+    Use markdown headings for structure.
+    ````
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+<Expandable title="Advanced Customization" default-open="false">
+  Override default styles with custom CSS variables. Inject via space settings:
+
+  ```javascript
+  // Example config
+  const config = {
+    theme: {
+      colors: {
+        primary: '#3B82F6'
+      }
+    }
+  };
+  ```
+
+  Test changes in preview mode before publishing.
+</Expandable>
+
+Hamza adapts to your needs, scaling from small projects to enterprise docs. Explore features to boost productivity.
